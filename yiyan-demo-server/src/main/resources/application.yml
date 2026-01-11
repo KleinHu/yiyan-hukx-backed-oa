@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 10008
 
 spring:
   main:
@@ -11,24 +11,24 @@ spring:
       datasource:
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://10.1.1.120:31101/platform?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+          url: jdbc:mysql://localhost:3307/platform?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
           username: root
-          password: yiyan2023
+          password: yiyan
   # 服务注册
   cloud:
     nacos:
       discovery:
-        namespace: platform
-        server-addr: 10.1.1.120:31103
+        namespace: local
+        server-addr: localhost:8848
   #    bus:
-#      enabled: true # 是否开启，默认为 true
-#      id: ${spring.application.name}:${server.port} # 编号，Spring Cloud Alibaba 建议使用“应用:端口”的格式
-#      destination: springCloudBus # 目标消息队列，默认为 springCloudBus
+  #      enabled: true # 是否开启，默认为 true
+  #      id: ${spring.application.name}:${server.port} # 编号，Spring Cloud Alibaba 建议使用“应用:端口”的格式
+  #      destination: springCloudBus # 目标消息队列，默认为 springCloudBus
   # redis配置
   redis:
-    host: 10.1.1.120
-    port: 31108
-    password: yiyan2023
+    host: localhost
+    port: 6379
+    password: yiyan
     timeout: 5000ms
     lettuce:
       pool:
@@ -39,10 +39,10 @@ spring:
 
   # rabbitMQ配置
   rabbitmq:
-    host: 10.1.1.120
-    port: 31107
+    host: localhost
+    port: 5672
     username: yiyan
-    password: yiyan2023
+    password: yiyan
     virtual-host: /yiyan
 
 # 日志等级
@@ -68,7 +68,7 @@ feign:
 yiyan:
   security:
     resource-id: ${spring.application.name:demo}
-    token-info-uri: http://10.1.1.120:31104/oauth/check_token
+    token-info-uri: http://localhost:8848/oauth/check_token
     client-id: c1
     client-secret: secret
     permitAllUrls:
@@ -79,7 +79,7 @@ xxl:
   job:
     enabled: false
     admin:
-      addresses: http://127.0.0.1:8082/xxl-job-admin # 调度中心部署跟地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
+      addresses: http://localhost:8848/xxl-job-admin # 调度中心部署跟地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
     executor:
       app-name: ${spring.application.name} # 执行器 AppName [选填]：执行器心跳注册分组依据；为空则关闭自动注册
       ip: # 执行器IP [选填]：默认为空表示自动获取IP，多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯实用；地址信息用于 "执行器注册" 和 "调度中心请求并触发任务"；
