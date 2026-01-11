@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>yiyan-hukx</artifactId>
+    <groupId>com.cac.demo</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>yiyan-demo-biz</artifactId>
+  <description>业务逻辑</description>
+
+  <dependencies>
+
+    <!--平台基础包-->
+    <dependency>
+      <groupId>com.cac.yiyan</groupId>
+      <artifactId>yiyan-common</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cac.demo</groupId>
+      <artifactId>yiyan-demo-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!--web功能依赖-->
+    <dependency>
+      <groupId>com.cac.yiyan</groupId>
+      <artifactId>yiyan-spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!--mybatis功能依赖，实为mybatis-plus-->
+    <dependency>
+      <groupId>com.cac.yiyan</groupId>
+      <artifactId>yiyan-spring-boot-starter-mybatis</artifactId>
+    </dependency>
+
+    <!--权限、认证依赖-->
+    <dependency>
+      <groupId>com.cac.yiyan</groupId>
+      <artifactId>yiyan-spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cac.yiyan</groupId>
+      <artifactId>yiyan-spring-boot-starter-dict</artifactId>
+    </dependency>
+
+    <!--redis功能依赖-->
+    <dependency>
+      <groupId>com.cac.yiyan</groupId>
+      <artifactId>yiyan-spring-boot-starter-redis</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.redisson</groupId>
+          <artifactId>redisson-spring-boot-starter</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!--定时任务依赖-->
+    <!--<dependency>
+        <groupId>com.cac.yiyan</groupId>
+        <artifactId>yiyan-spring-boot-starter-job</artifactId>
+    </dependency>-->
+
+    <!--mq依赖，基于spring cloud bus-->
+    <!--<dependency>
+        <groupId>com.cac.yiyan</groupId>
+        <artifactId>yiyan-spring-boot-starter-mq</artifactId>
+    </dependency>-->
+
+    <!--操作日志依赖-->
+    <dependency>
+      <groupId>com.cac.yiyan</groupId>
+      <artifactId>yiyan-spring-boot-starter-operatelog</artifactId>
+    </dependency>
+    <!--错误码管理-->
+    <!--<dependency>
+        <groupId>com.cac.yiyan</groupId>
+        <artifactId>yiyan-spring-boot-starter-error-code</artifactId>
+    </dependency>-->
+    <!--数据权限-->
+    <!--<dependency>
+        <groupId>com.cac.yiyan</groupId>
+        <artifactId>yiyan-spring-boot-starter-data-permission</artifactId>
+    </dependency>-->
+
+  </dependencies>
+
+</project>

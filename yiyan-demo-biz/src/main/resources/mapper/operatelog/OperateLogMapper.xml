@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cac.demo.dao.operatelog.OperateLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseResultMap"
+               type="com.cac.demo.entity.operatelog.OperateLogEntity">
+        <id property="id" column="id"/>
+        <result property="traceId" column="trace_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="userType" column="user_type"/>
+        <result property="secretLevel" column="secret_level"/>
+        <result property="module" column="module"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="content" column="content"/>
+        <result property="exts" column="exts"/>
+        <result property="requestMethod" column="request_method"/>
+        <result property="requestUrl" column="request_url"/>
+        <result property="userIp" column="user_ip"/>
+        <result property="userAgent" column="user_agent"/>
+        <result property="javaMethod" column="java_method"/>
+        <result property="javaMethodArgs" column="java_method_args"/>
+        <result property="startTime" column="start_time"/>
+        <result property="duration" column="duration"/>
+        <result property="resultType" column="result_type"/>
+        <result property="resultCode" column="result_code"/>
+        <result property="resultMsg" column="result_msg"/>
+        <result property="resultData" column="result_data"/>
+        <result property="creator" column="creator"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updater" column="updater"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateIp" column="update_ip"/>
+        <result property="tenantId" column="tenant_id"/>
+    </resultMap>
+
+    <sql id="common_sql_field">
+        t1.id,t1.trace_id,t1.user_id,t1.user_type,t1.secret_level,t1.module,t1.name,t1.type,t1.content,t1.exts,t1.request_method,t1.request_url,t1.user_ip,t1.user_agent,t1.java_method,t1.java_method_args,t1.start_time,t1.duration,t1.result_type,t1.result_code,t1.result_msg,t1.result_data,t1.creator,t1.create_time,t1.updater,t1.update_time,t1.update_ip,t1.tenant_id
+    </sql>
+
+
+</mapper>

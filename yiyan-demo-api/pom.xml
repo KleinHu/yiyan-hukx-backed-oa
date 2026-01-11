@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>yiyan-hukx</artifactId>
+    <groupId>com.cac.demo</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>yiyan-demo-api</artifactId>
+  <description>对外提供接口</description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.cac.yiyan</groupId>
+      <artifactId>yiyan-common</artifactId>
+    </dependency>
+
+    <!-- 接口文档-->
+    <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-annotations</artifactId>
+    </dependency>
+
+    <!-- 参数校验 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cac.yiyan</groupId>
+      <artifactId>yiyan-spring-boot-starter-rpc</artifactId>
+    </dependency>
+
+  </dependencies>
+
+</project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <!-- 默认本地仓库目录，可保持不变 -->
+  <localRepository>C:/Users/Administrator/.m2/repository</localRepository>
+
+  <!-- 这里填写内网私服需要的认证（如不需要可删除） -->
+  <servers>
+    <!--
+    <server>
+      <id>cac-private</id>
+      <username>你的用户名</username>
+      <password>你的密码</password>
+    </server>
+    -->
+  </servers>
+
+  <!-- mirrors 控制依赖解析时的源选择 -->
+  <mirrors>
+    <!-- 只对 com.cac.yiyan 这类私服包使用本地缓存 -->
+    <mirror>
+      <id>local-yiyan</id>
+      <mirrorOf>com.cac.yiyan</mirrorOf>
+      <url>file:///C:/Users/Administrator/.m2/repository</url>
+    </mirror>
+
+    <!-- 其他依赖仍走中央仓库（需要可以在公司代理地址替换） -->
+    <mirror>
+      <id>central</id>
+      <mirrorOf>central</mirrorOf>
+      <url>https://repo1.maven.org/maven2</url>
+    </mirror>
+  </mirrors>
+
+  <!-- profile 提供额外仓库声明（可选） -->
+  <profiles>
+    <profile>
+      <id>local-private-artifacts</id>
+      <repositories>
+        <repository>
+          <id>local-jar-cache</id>
+          <url>file:///C:/Users/Administrator/.m2/repository</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+        <!-- 如需公开仓库也写一份 -->
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>local-private-artifacts</activeProfile>
+  </activeProfiles>
+</settings>
