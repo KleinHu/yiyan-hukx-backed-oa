@@ -11,14 +11,14 @@ spring:
       datasource:
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://localhost:3307/platform?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+          url: jdbc:mysql://localhost:3307/240_hr?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
           username: root
           password: yiyan
   # 服务注册
   cloud:
     nacos:
       discovery:
-        namespace: local
+        namespace: platform
         server-addr: localhost:8848
   #    bus:
   #      enabled: true # 是否开启，默认为 true
@@ -68,18 +68,22 @@ feign:
 yiyan:
   security:
     resource-id: ${spring.application.name:demo}
-    token-info-uri: http://localhost:8848/oauth/check_token
-    client-id: c1
-    client-secret: secret
+    token-info-uri: http://localhost:39996/oauth/check_token
+    client-id: hukx-hr
+    client-secret: hukx
     permitAllUrls:
       - /admin/**
+  feign:
+    system-path: http://localhost:39996/yiyan-system
+    auth-path: http://localhost:39996/yiyan-auth
+    file-path: http://localhost:39996/yiyan-file
 
 # 默认不开启定时任务功能
 xxl:
   job:
     enabled: false
     admin:
-      addresses: http://localhost:8848/xxl-job-admin # 调度中心部署跟地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
+      addresses: http://localhost:39996/xxl-job-admin # 调度中心部署跟地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
     executor:
       app-name: ${spring.application.name} # 执行器 AppName [选填]：执行器心跳注册分组依据；为空则关闭自动注册
       ip: # 执行器IP [选填]：默认为空表示自动获取IP，多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯实用；地址信息用于 "执行器注册" 和 "调度中心请求并触发任务"；
