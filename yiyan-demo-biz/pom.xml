@@ -78,6 +78,14 @@
       <groupId>com.cac.yiyan</groupId>
       <artifactId>yiyan-spring-boot-starter-operatelog</artifactId>
     </dependency>
+
+    <!--MinIO依赖-->
+    <dependency>
+      <groupId>io.minio</groupId>
+      <artifactId>minio</artifactId>
+      <version>8.5.7</version>
+    </dependency>
+
     <!--错误码管理-->
     <!--<dependency>
         <groupId>com.cac.yiyan</groupId>

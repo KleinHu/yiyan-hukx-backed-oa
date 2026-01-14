@@ -78,6 +78,15 @@ yiyan:
     auth-path: http://localhost:39996/yiyan-auth
     file-path: http://localhost:39996/yiyan-file
 
+# MinIO配置
+minio:
+  endpoint: http://localhost:9000
+  downLoadEndpoint: http://localhost:9001
+  access-key: k24q1AI3dfCVjTkN
+  secret-key: JpFncnBJHPutISTbJk85qHAqYrseqioh
+  bucket-name: hukx
+  module-name: hr
+
 # 默认不开启定时任务功能
 xxl:
   job:
