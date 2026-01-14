@@ -57,27 +57,20 @@ public class MinIOServiceImpl implements MinIOService {
             String objectName;
             if (StringUtils.hasText(path)) {
                 // 如果指定了路径，使用指定路径
-                // 去除首尾空格，去除首尾斜杠
-                String normalizedPath = path.trim();
-                if (normalizedPath.startsWith("/")) {
-                    normalizedPath = normalizedPath.substring(1);
-                }
-                if (normalizedPath.endsWith("/")) {
-                    normalizedPath = normalizedPath.substring(0, normalizedPath.length() - 1);
-                }
-                // 确保路径以 / 开头，拼接文件名
-                objectName = "/" + minIOConfig.getModuleName() + "/" + normalizedPath + "/" + fileName;
+                // 确保路径以 / 开头，不以 / 结尾
+                String normalizedPath = path.startsWith("/") ? path : "/" + path;
+                normalizedPath = normalizedPath.endsWith("/") ? normalizedPath.substring(0, normalizedPath.length() - 1) : normalizedPath;
+                objectName = normalizedPath + "/" + fileName;
             } else {
-                // 如果路径为空，使用默认路径：/moduleName/年/月/日
+                // 如果路径为空，使用默认路径：/moduleName/年/月/日（月份和日期不带前导零）
                 String moduleName = StringUtils.hasText(minIOConfig.getModuleName()) ? minIOConfig.getModuleName() : "default";
                 LocalDate now = LocalDate.now();
-                // 日期格式：年/月/日（不补零，如：2026/1/14）
                 String datePath = now.getYear() + "/" + now.getMonthValue() + "/" + now.getDayOfMonth();
                 objectName = "/" + moduleName + "/" + datePath + "/" + fileName;
             }
 
-            // 去除路径中的双斜杠（除了开头的单斜杠）
-            objectName = objectName.replaceAll("//+", "/");
+            // 确保路径没有双斜杠
+            objectName = objectName.replaceAll("/+", "/");
 
             return uploadFileWithFullPath(file, objectName);
         } catch (Exception e) {
@@ -105,8 +98,8 @@ public class MinIOServiceImpl implements MinIOService {
                             .build()
             );
 
-            // 返回文件访问URL
-            return getFileUrl(objectName);
+            // 返回文件访问URL（直接拼接）
+            return buildFileUrl(objectName);
         } catch (Exception e) {
             log.error("上传文件失败: {}", e.getMessage(), e);
             throw new ServiceException("上传文件失败: " + e.getMessage());
@@ -132,8 +125,8 @@ public class MinIOServiceImpl implements MinIOService {
                             .build()
             );
 
-            // 返回文件访问URL
-            return getFileUrl(objectName);
+            // 返回文件访问URL（直接拼接）
+            return buildFileUrl(objectName);
         } catch (Exception e) {
             log.error("上传文件流失败: {}", e.getMessage(), e);
             throw new ServiceException("上传文件流失败: " + e.getMessage());
@@ -329,6 +322,32 @@ public class MinIOServiceImpl implements MinIOService {
             log.error("获取文件大小失败: {}", e.getMessage(), e);
             throw new ServiceException("获取文件大小失败: " + e.getMessage());
         }
+    }
+
+    /**
+     * 构建文件访问URL（直接拼接）
+     *
+     * @param objectName 对象名称（文件路径）
+     * @return 文件访问URL
+     */
+    private String buildFileUrl(String objectName) {
+        if (!StringUtils.hasText(objectName)) {
+            return null;
+        }
+
+        // 规范化路径：去除开头的斜杠（如果有），确保路径格式正确
+        String normalizedPath = objectName.startsWith("/") ? objectName.substring(1) : objectName;
+
+        // 拼接URL：endpoint/bucketName/objectName
+        String endpoint = minIOConfig.getEndpoint();
+        String bucketName = minIOConfig.getBucketName();
+
+        // 确保endpoint不以斜杠结尾
+        if (endpoint.endsWith("/")) {
+            endpoint = endpoint.substring(0, endpoint.length() - 1);
+        }
+
+        return endpoint + "/" + bucketName + "/" + normalizedPath;
     }
 
     /**
