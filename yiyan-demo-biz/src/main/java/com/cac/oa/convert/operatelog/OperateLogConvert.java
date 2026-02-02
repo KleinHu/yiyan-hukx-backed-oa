@@ -1,4 +1,4 @@
-package com.cac.demo.convert.operatelog;
+package com.cac.oa.convert.operatelog;
 
 import java.util.*;
 
@@ -6,14 +6,14 @@ import com.cac.yiyan.common.page.PageData;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import com.cac.demo.vo.operatelog.OperateLogVO;
-import com.cac.demo.entity.operatelog.OperateLogEntity;
-import com.cac.demo.vo.operatelog.OperateLogExcel;
+import com.cac.oa.vo.operatelog.OperateLogVO;
+import com.cac.oa.entity.operatelog.OperateLogEntity;
+import com.cac.oa.vo.operatelog.OperateLogExcel;
 
 /**
  *  Convert
  *
- * @author 
+ * @author
  */
 @Mapper
 public interface OperateLogConvert {

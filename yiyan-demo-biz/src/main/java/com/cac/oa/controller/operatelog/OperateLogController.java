@@ -1,11 +1,11 @@
-package com.cac.demo.controller.operatelog;
+package com.cac.oa.controller.operatelog;
 
-import com.cac.demo.convert.operatelog.OperateLogConvert;
-import com.cac.demo.entity.operatelog.OperateLogEntity;
-import com.cac.demo.service.operatelog.OperateLogService;
-import com.cac.demo.vo.operatelog.OperateLogExcel;
-import com.cac.demo.vo.operatelog.OperateLogQuery;
-import com.cac.demo.vo.operatelog.OperateLogVO;
+import com.cac.oa.convert.operatelog.OperateLogConvert;
+import com.cac.oa.entity.operatelog.OperateLogEntity;
+import com.cac.oa.service.operatelog.OperateLogService;
+import com.cac.oa.vo.operatelog.OperateLogExcel;
+import com.cac.oa.vo.operatelog.OperateLogQuery;
+import com.cac.oa.vo.operatelog.OperateLogVO;
 import com.cac.yiyan.common.constant.PageConstant;
 import com.cac.yiyan.common.excel.ErrorReadListener;
 import com.cac.yiyan.common.excel.ExcelValidateResult;

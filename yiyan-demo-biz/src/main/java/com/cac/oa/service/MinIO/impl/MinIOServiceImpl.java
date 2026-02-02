@@ -1,7 +1,7 @@
-package com.cac.demo.service.MinIO.impl;
+package com.cac.oa.service.MinIO.impl;
 
-import com.cac.demo.config.MinIOConfig;
-import com.cac.demo.service.MinIO.MinIOService;
+import com.cac.oa.config.MinIOConfig;
+import com.cac.oa.service.MinIO.MinIOService;
 import com.cac.yiyan.common.exception.service.ServiceException;
 import io.minio.*;
 import io.minio.errors.ErrorResponseException;

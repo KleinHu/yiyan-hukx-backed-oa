@@ -1,7 +1,7 @@
-package com.cac.demo.api.demo;
+package com.cac.oa.api.demo;
 
-import com.cac.demo.ApiConstant;
-import com.cac.demo.api.demo.dto.DemoDTO;
+import com.cac.oa.ApiConstant;
+import com.cac.oa.api.demo.dto.DemoDTO;
 import com.cac.yiyan.common.vo.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.cac.demo.entity.operatelog;
+package com.cac.oa.entity.operatelog;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.baomidou.mybatisplus.annotation.*;
@@ -11,11 +11,11 @@ import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
- * @author 
- * @since 
+ * @author
+ * @since
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

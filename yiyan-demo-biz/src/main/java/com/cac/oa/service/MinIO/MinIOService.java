@@ -1,4 +1,4 @@
-package com.cac.demo.service.MinIO;
+package com.cac.oa.service.MinIO;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * MinIO服务接口
- * 
+ *
  * @author system
  * @date 2026-01-15
  */
@@ -15,7 +15,7 @@ public interface MinIOService {
 
     /**
      * 上传文件（使用默认路径：/moduleName/年/月/日）
-     * 
+     *
      * @param file 文件
      * @return 文件访问URL
      */
@@ -23,7 +23,7 @@ public interface MinIOService {
 
     /**
      * 上传文件（可指定路径）
-     * 
+     *
      * @param file 文件
      * @param path 文件路径（如果为空，则使用默认路径：/moduleName/年/月/日）
      * @return 文件访问URL
@@ -32,7 +32,7 @@ public interface MinIOService {
 
     /**
      * 上传文件到指定完整路径
-     * 
+     *
      * @param file 文件
      * @param objectName 对象名称（完整文件路径）
      * @return 文件访问URL
@@ -41,7 +41,7 @@ public interface MinIOService {
 
     /**
      * 上传文件流
-     * 
+     *
      * @param inputStream 文件流
      * @param objectName 对象名称（文件路径）
      * @param contentType 文件类型
@@ -51,7 +51,7 @@ public interface MinIOService {
 
     /**
      * 删除文件
-     * 
+     *
      * @param objectName 对象名称（文件路径）
      * @return 是否删除成功
      */
@@ -59,7 +59,7 @@ public interface MinIOService {
 
     /**
      * 批量删除文件
-     * 
+     *
      * @param objectNames 对象名称列表
      * @return 是否全部删除成功
      */
@@ -67,7 +67,7 @@ public interface MinIOService {
 
     /**
      * 检查文件是否存在
-     * 
+     *
      * @param objectName 对象名称（文件路径）
      * @return 是否存在
      */
@@ -75,7 +75,7 @@ public interface MinIOService {
 
     /**
      * 获取文件访问URL（预签名URL，有效期7天）
-     * 
+     *
      * @param objectName 对象名称（文件路径）
      * @return 文件访问URL
      */
@@ -83,7 +83,7 @@ public interface MinIOService {
 
     /**
      * 获取文件访问URL（自定义有效期）
-     * 
+     *
      * @param objectName 对象名称（文件路径）
      * @param expiry 有效期（秒）
      * @return 文件访问URL
@@ -92,7 +92,7 @@ public interface MinIOService {
 
     /**
      * 下载文件
-     * 
+     *
      * @param objectName 对象名称（文件路径）
      * @return 文件流
      */
@@ -100,7 +100,7 @@ public interface MinIOService {
 
     /**
      * 复制文件
-     * 
+     *
      * @param sourceObjectName 源对象名称
      * @param targetObjectName 目标对象名称
      * @return 是否复制成功
@@ -109,7 +109,7 @@ public interface MinIOService {
 
     /**
      * 获取文件信息
-     * 
+     *
      * @param objectName 对象名称（文件路径）
      * @return 文件大小（字节）
      */

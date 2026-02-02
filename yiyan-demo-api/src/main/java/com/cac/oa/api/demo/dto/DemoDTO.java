@@ -1,4 +1,4 @@
-package com.cac.demo.api.demo.dto;
+package com.cac.oa.api.demo.dto;
 
 import lombok.Data;
 

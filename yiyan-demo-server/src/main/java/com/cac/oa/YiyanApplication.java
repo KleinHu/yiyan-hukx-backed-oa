@@ -1,4 +1,4 @@
-package com.cac.demo;
+package com.cac.oa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,10 +1,10 @@
-package com.cac.demo.vo.operatelog;
+package com.cac.oa.vo.operatelog;
 
 import com.cac.yiyan.common.page.PageParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
-import java.util.Date;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import static com.cac.yiyan.common.util.date.DateUtils.FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
 
@@ -15,11 +15,11 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
- * @author 
- * @since 
+ * @author
+ * @since
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

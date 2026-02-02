@@ -1,4 +1,4 @@
-package com.cac.demo.vo.operatelog;
+package com.cac.oa.vo.operatelog;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -12,11 +12,11 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
- * @author 
- * @since 
+ * @author
+ * @since
  */
 @Data
 @NoArgsConstructor

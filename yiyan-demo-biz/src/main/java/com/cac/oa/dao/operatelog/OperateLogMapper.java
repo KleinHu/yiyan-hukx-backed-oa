@@ -1,7 +1,7 @@
-package com.cac.demo.dao.operatelog;
+package com.cac.oa.dao.operatelog;
 
-import com.cac.demo.vo.operatelog.OperateLogQuery;
-import com.cac.demo.entity.operatelog.OperateLogEntity;
+import com.cac.oa.vo.operatelog.OperateLogQuery;
+import com.cac.oa.entity.operatelog.OperateLogEntity;
 import com.cac.yiyan.common.page.PageData;
 import com.cac.yiyan.mybatis.mapper.BaseMapperX;
 import com.cac.yiyan.mybatis.query.LambdaQueryWrapperX;
@@ -14,8 +14,8 @@ import java.util.List;
  *  Mapper
  * </p>
  *
- * @author 
- * @since 
+ * @author
+ * @since
  */
 @Mapper
 public interface OperateLogMapper extends BaseMapperX<OperateLogEntity> {

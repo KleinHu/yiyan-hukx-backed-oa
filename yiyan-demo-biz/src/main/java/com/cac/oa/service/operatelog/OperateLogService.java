@@ -1,8 +1,7 @@
-package com.cac.demo.service.operatelog;
+package com.cac.oa.service.operatelog;
 
-import com.cac.demo.vo.operatelog.OperateLogVO;
-import com.cac.demo.vo.operatelog.OperateLogQuery;
-import com.cac.demo.entity.operatelog.OperateLogEntity;
+import com.cac.oa.vo.operatelog.OperateLogQuery;
+import com.cac.oa.entity.operatelog.OperateLogEntity;
 import com.cac.yiyan.common.page.PageData;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -14,8 +13,8 @@ import java.util.List;
  *  Service 接口
  * </p>
  *
- * @author 
- * @since 
+ * @author
+ * @since
  */
 
 public interface OperateLogService extends IService<OperateLogEntity> {

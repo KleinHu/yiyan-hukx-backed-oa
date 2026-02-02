@@ -1,4 +1,4 @@
-package com.cac.demo.config;
+package com.cac.oa.config;
 
 import io.minio.MinioClient;
 import lombok.Data;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * MinIO配置类
- * 
+ *
  * @author system
  * @date 2026-01-15
  */

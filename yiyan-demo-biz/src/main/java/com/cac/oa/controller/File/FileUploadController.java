@@ -1,6 +1,6 @@
-package com.cac.demo.controller.File;
+package com.cac.oa.controller.File;
 
-import com.cac.demo.service.MinIO.MinIOService;
+import com.cac.oa.service.MinIO.MinIOService;
 import com.cac.yiyan.common.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

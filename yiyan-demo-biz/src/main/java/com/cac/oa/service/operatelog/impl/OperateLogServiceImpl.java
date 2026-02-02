@@ -1,11 +1,10 @@
-package com.cac.demo.service.operatelog.impl;
+package com.cac.oa.service.operatelog.impl;
 
-import com.cac.demo.vo.operatelog.OperateLogQuery;
-import com.cac.demo.vo.operatelog.OperateLogVO;
-import com.cac.demo.entity.operatelog.OperateLogEntity;
-import com.cac.demo.service.operatelog.OperateLogService;
-import com.cac.demo.dao.operatelog.OperateLogMapper;
-import com.cac.demo.convert.operatelog.OperateLogConvert;
+import com.cac.oa.vo.operatelog.OperateLogQuery;
+import com.cac.oa.entity.operatelog.OperateLogEntity;
+import com.cac.oa.service.operatelog.OperateLogService;
+import com.cac.oa.dao.operatelog.OperateLogMapper;
+import com.cac.oa.convert.operatelog.OperateLogConvert;
 import com.cac.yiyan.common.page.PageData;
 import com.cac.yiyan.common.exception.service.ServiceException;
 
@@ -23,8 +22,8 @@ import java.util.List;
  *  Service 实现类
  * </p>
  *
- * @author 
- * @since 
+ * @author
+ * @since
  */
 @Slf4j
 @Service

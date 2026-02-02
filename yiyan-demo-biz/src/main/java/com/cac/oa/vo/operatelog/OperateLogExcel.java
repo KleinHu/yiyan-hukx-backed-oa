@@ -1,4 +1,4 @@
-package com.cac.demo.vo.operatelog;
+package com.cac.oa.vo.operatelog;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
@@ -6,11 +6,11 @@ import java.util.Date;
 
 /**
 * <p>
-* 
+*
 * </p>
 *
-* @author 
-* @since 
+* @author
+* @since
 */
 @Data
 public class OperateLogExcel {

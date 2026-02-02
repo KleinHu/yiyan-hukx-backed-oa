@@ -1,6 +1,6 @@
-package com.cac.demo.api.demo;
+package com.cac.oa.api.demo;
 
-import com.cac.demo.api.demo.dto.DemoDTO;
+import com.cac.oa.api.demo.dto.DemoDTO;
 import com.cac.yiyan.common.vo.Result;
 import org.springframework.web.bind.annotation.RestController;
 
