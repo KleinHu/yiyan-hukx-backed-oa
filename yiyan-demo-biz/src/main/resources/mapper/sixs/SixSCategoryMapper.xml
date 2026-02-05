@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cac.oa.dao.sixs.SixSCategoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseResultMap" type="com.cac.oa.entity.sixs.SixSCategoryEntity">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="defaultScore" column="default_score"/>
+        <result property="operationType" column="operation_type"/>
+        <result property="description" column="description"/>
+        <result property="sort" column="sort"/>
+        <result property="status" column="status"/>
+        <result property="creator" column="creator"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updater" column="updater"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="common_sql_field">
+        t1.id, t1.name, t1.code, t1.default_score, t1.operation_type, t1.description, t1.sort, t1.status,
+        t1.creator, t1.create_time, t1.updater, t1.update_time
+    </sql>
+
+</mapper>
