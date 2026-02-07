@@ -51,7 +51,7 @@ public class SixSAccountController {
     @GetMapping("/statistics")
     @ApiOperation("获取统计数据")
     @ApiImplicitParam(name = "year", value = "年份", required = false, example = "2024", dataTypeClass = Integer.class)
-    @PreAuthorize("@ss.hasPermission('sixs:account:query')")
+//    @PreAuthorize("@ss.hasPermission('sixs:account:query')")
     public Result<SixSAccountStatisticsVO> getStatistics(@RequestParam(value = "year", required = false) Integer year) {
         return Result.ok(sixSAccountService.getStatistics(year));
     }
