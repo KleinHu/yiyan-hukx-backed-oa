@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cac.oa.dao.supplies.SuppliesRequestMapper">
+
+    <resultMap id="DeptItemConsumptionMap" type="com.cac.oa.vo.supplies.DeptItemConsumptionVO">
+        <result column="deptName" property="deptName"/>
+        <result column="itemId" property="itemId"/>
+        <result column="itemName" property="itemName"/>
+        <result column="spec" property="spec"/>
+        <result column="totalQuantity" property="totalQuantity"/>
+        <result column="categoryId" property="categoryId"/>
+    </resultMap>
+
+    <select id="selectDeptItemConsumption" resultMap="DeptItemConsumptionMap">
+        SELECT
+            r.dept_name as deptName,
+            ri.item_id as itemId,
+            i.name as itemName,
+            i.spec as spec,
+            i.category_id as categoryId,
+            SUM(ri.issued_quantity) as totalQuantity
+        FROM supplies_request r
+        JOIN supplies_request_item ri ON r.id = ri.request_id
+        JOIN supplies_item i ON ri.item_id = i.id
+        WHERE r.audit_status = 3
+        <if test="query.startMonth != null and query.startMonth != '' and query.endMonth != null and query.endMonth != ''">
+            AND DATE_FORMAT(r.apply_time, '%Y-%m') BETWEEN #{query.startMonth} AND #{query.endMonth}
+        </if>
+        <if test="(query.startMonth == null or query.startMonth == '') and query.year != null and query.year != ''">
+            AND YEAR(r.apply_time) = #{query.year}
+        </if>
+        GROUP BY r.dept_name, ri.item_id, i.name, i.spec, i.category_id
+        ORDER BY r.dept_name, totalQuantity DESC
+    </select>
+
+    <select id="selectUserConsumptionDetails" resultType="com.cac.oa.vo.supplies.UserConsumptionDetailVO">
+        SELECT
+            r.user_name as userName,
+            r.user_code as userCode,
+            r.order_no as orderNo,
+            r.apply_time as applyTime,
+            ri.issued_quantity as quantity
+        FROM supplies_request r
+        JOIN supplies_request_item ri ON r.id = ri.request_id
+        WHERE r.audit_status = 3
+        AND r.dept_name = #{deptName}
+        AND ri.item_id = #{itemId}
+        <if test="query.startMonth != null and query.startMonth != '' and query.endMonth != null and query.endMonth != ''">
+            AND DATE_FORMAT(r.apply_time, '%Y-%m') BETWEEN #{query.startMonth} AND #{query.endMonth}
+        </if>
+        <if test="(query.startMonth == null or query.startMonth == '') and query.year != null and query.year != ''">
+            AND YEAR(r.apply_time) = #{query.year}
+        </if>
+        ORDER BY r.apply_time DESC
+    </select>
+
+</mapper>
