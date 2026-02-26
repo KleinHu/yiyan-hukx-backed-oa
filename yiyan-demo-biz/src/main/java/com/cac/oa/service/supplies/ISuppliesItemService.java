@@ -25,4 +25,9 @@ public interface ISuppliesItemService extends IService<SuppliesItemEntity> {
      * 变更库存 (事务控制)
      */
     void changeInventory(InventoryChangeRequest request);
+
+    /**
+     * 删除流水并还原库存
+     */
+    void deleteRecord(Long id);
 }

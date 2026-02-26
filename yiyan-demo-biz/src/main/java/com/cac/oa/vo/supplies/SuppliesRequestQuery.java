@@ -22,4 +22,7 @@ public class SuppliesRequestQuery extends PageParam {
 
     @ApiModelProperty("所属年份")
     private String year;
+
+    @ApiModelProperty("申请单号")
+    private String orderNo;
 }

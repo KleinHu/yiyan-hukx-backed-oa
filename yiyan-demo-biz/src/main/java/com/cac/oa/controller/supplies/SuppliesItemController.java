@@ -80,4 +80,11 @@ public class SuppliesItemController {
     public Result<PageData<SuppliesRecordVO>> recordPage(SuppliesRecordQuery query) {
         return Result.ok(itemService.getRecordPage(query));
     }
+
+    @DeleteMapping("/record/{id}")
+    @ApiOperation("删除库存流水 (级联还原库存和申请)")
+    public Result<Void> deleteRecord(@PathVariable Long id) {
+        itemService.deleteRecord(id);
+        return Result.ok();
+    }
 }

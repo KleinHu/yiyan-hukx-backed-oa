@@ -16,8 +16,8 @@ spring:
       datasource:
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          #          url: jdbc:mysql://hukx-Macmini.local:3307/240_hr?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
-          url: jdbc:mysql://hukx-Macmini.local:3307/240_oa?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+          #          url: jdbc:mysql://162.14.102.209:3307/240_hr?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
+          url: jdbc:mysql://162.14.102.209:3306/240_oa?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowMultiQueries=true
           username: root
           password: yiyan
   # 服务注册
@@ -25,7 +25,7 @@ spring:
     nacos:
       discovery:
         namespace: platform
-        server-addr: hukx-Macmini.local:8848
+        server-addr: 162.14.102.209:8848
         # Nacos 认证用户（根据实际 Nacos 服务器配置修改）
         username: nacos
         # Nacos 认证密码（根据实际 Nacos 服务器配置修改）
@@ -36,7 +36,7 @@ spring:
   #      destination: springCloudBus # 目标消息队列，默认为 springCloudBus
   # redis配置
   redis:
-    host: hukx-Macmini.local
+    host: 162.14.102.209
     port: 6379
     password: yiyan
     timeout: 5000ms
@@ -49,7 +49,7 @@ spring:
 
   # rabbitMQ配置
   rabbitmq:
-    host: hukx-Macmini.local
+    host: 162.14.102.209
     port: 5672
     username: yiyan
     password: yiyan
@@ -78,7 +78,7 @@ feign:
 yiyan:
   security:
     resource-id: ${spring.application.name:demo}
-    token-info-uri: http://hukx-Macmini.local:39996/oauth/check_token
+    token-info-uri: http://162.14.102.209:39996/oauth/check_token
     client-id: hukx-hr
     client-secret: hukx
     permitAllUrls:
@@ -92,13 +92,13 @@ yiyan:
       - /api/240/oa/sixs/check-record/page # 检查记录分页
       - /api/240/oa/sixs/category/list # 分类列表
   feign:
-    system-path: http://hukx-Macmini.local:39996/yiyan-system
-    auth-path: http://hukx-Macmini.local:39996/yiyan-auth
-    file-path: http://hukx-Macmini.local:39996/yiyan-file
+    system-path: http://162.14.102.209:39996/yiyan-system
+    auth-path: http://162.14.102.209:39996/yiyan-auth
+    file-path: http://162.14.102.209:39996/yiyan-file
 
 # MinIO配置
 minio:
-  endpoint: http://hukx-Macmini.local:9000
+  endpoint: http://162.14.102.209:9000
   access-key: k24q1AI3dfCVjTkN
   secret-key: JpFncnBJHPutISTbJk85qHAqYrseqioh
   bucket-name: hukx
@@ -109,7 +109,7 @@ xxl:
   job:
     enabled: false
     admin:
-      addresses: http://hukx-Macmini.local:39996/xxl-job-admin # 调度中心部署跟地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
+      addresses: http://162.14.102.209:39996/xxl-job-admin # 调度中心部署跟地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
     executor:
       app-name: ${spring.application.name} # 执行器 AppName [选填]：执行器心跳注册分组依据；为空则关闭自动注册
       ip: # 执行器IP [选填]：默认为空表示自动获取IP，多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯实用；地址信息用于 "执行器注册" 和 "调度中心请求并触发任务"；

@@ -15,6 +15,7 @@ public interface SuppliesRequestMapper extends BaseMapperX<SuppliesRequestEntity
 
     default PageData<SuppliesRequestEntity> selectPage(SuppliesRequestQuery query) {
         return selectPage(query, new LambdaQueryWrapperX<SuppliesRequestEntity>()
+                .likeIfPresent(SuppliesRequestEntity::getOrderNo, query.getOrderNo())
                 .eqIfPresent(SuppliesRequestEntity::getUserCode, query.getUserCode())
                 .eqIfPresent(SuppliesRequestEntity::getAuditStatus, query.getAuditStatus())
                 .apply(query.getYear() != null, "YEAR(apply_time) = {0}", query.getYear())

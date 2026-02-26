@@ -2,14 +2,8 @@ package com.cac.oa.service.supplies.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cac.oa.convert.supplies.SuppliesItemConvert;
-import com.cac.oa.dao.supplies.SuppliesItemMapper;
-import com.cac.oa.dao.supplies.SuppliesInventoryMapper;
-import com.cac.oa.dao.supplies.SuppliesRecordMapper;
-import com.cac.oa.dao.supplies.SuppliesCategoryMapper;
-import com.cac.oa.entity.supplies.SuppliesItemEntity;
-import com.cac.oa.entity.supplies.SuppliesInventoryEntity;
-import com.cac.oa.entity.supplies.SuppliesRecordEntity;
-import com.cac.oa.entity.supplies.SuppliesCategoryEntity;
+import com.cac.oa.dao.supplies.*;
+import com.cac.oa.entity.supplies.*;
 import com.cac.oa.service.supplies.ISuppliesItemService;
 import com.cac.oa.vo.supplies.InventoryChangeRequest;
 import com.cac.oa.vo.supplies.SuppliesItemVO;
@@ -36,6 +30,8 @@ public class SuppliesItemServiceImpl extends ServiceImpl<SuppliesItemMapper, Sup
     private final SuppliesInventoryMapper inventoryMapper;
     private final SuppliesRecordMapper recordMapper;
     private final SuppliesCategoryMapper categoryMapper;
+    private final SuppliesRequestMapper requestMapper;
+    private final SuppliesRequestItemMapper requestItemMapper;
 
     private final SuppliesItemConvert converter = SuppliesItemConvert.INSTANCE;
 
@@ -144,5 +140,39 @@ public class SuppliesItemServiceImpl extends ServiceImpl<SuppliesItemMapper, Sup
         });
 
         return voPage;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteRecord(Long id) {
+        SuppliesRecordEntity record = recordMapper.selectById(id);
+        if (record == null) {
+            return;
+        }
+
+        // 1. 还原库存
+        SuppliesInventoryEntity inventory = inventoryMapper.selectById(record.getItemId());
+        if (inventory != null) {
+            // type: 1-入库 (增加), 2-出库 (减少)
+            // 还原时：入库则减去，出库则加回
+            int revertQty = record.getType() == 1 ? -record.getQuantity() : record.getQuantity();
+            inventory.setStock(inventory.getStock() + revertQty);
+            inventoryMapper.updateById(inventory);
+        }
+
+        // 2. 级联删除领用申请 (如果单号以 LY 开头)
+        String relNo = record.getRelNo();
+        if (StringUtils.hasText(relNo) && relNo.startsWith("LY")) {
+            SuppliesRequestEntity request = requestMapper.selectOne(new LambdaQueryWrapperX<SuppliesRequestEntity>().eq(SuppliesRequestEntity::getOrderNo, relNo));
+            if (request != null) {
+                // 删除明细
+                requestItemMapper.delete(new LambdaQueryWrapperX<SuppliesRequestItemEntity>().eq(SuppliesRequestItemEntity::getRequestId, request.getId()));
+                // 删除主体
+                requestMapper.deleteById(request.getId());
+            }
+        }
+
+        // 3. 删除流水记录
+        recordMapper.deleteById(id);
     }
 }
