@@ -2,6 +2,7 @@ package com.cac.oa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * Copyright (c) 2024 成都飞机工业（集团）有限责任公司
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 易研示例项目工程
  */
 @SpringBootApplication
+@EnableScheduling
 public class YiyanApplication {
 
     public static void main(String[] args) {
