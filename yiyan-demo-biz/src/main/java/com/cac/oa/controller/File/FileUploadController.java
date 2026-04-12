@@ -25,7 +25,7 @@ import java.util.Map;
 @Slf4j
 @Api(tags = "文件上传管理")
 @RestController
-@RequestMapping("/api/hr/file")
+@RequestMapping("/api/240/oa/file")
 @RequiredArgsConstructor
 public class FileUploadController {
 

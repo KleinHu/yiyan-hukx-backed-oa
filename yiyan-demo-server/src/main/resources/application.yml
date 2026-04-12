@@ -7,8 +7,8 @@ spring:
   # 放宽文件上传大小限制（默认单文件 1MB，此处改为 10MB）
   servlet:
     multipart:
-      max-file-size: 10MB
-      max-request-size: 10MB
+      max-file-size: 200MB
+      max-request-size: 200MB
   datasource:
     dynamic:
       primary: master #设置默认的数据源或者数据源组,默认值即为master
